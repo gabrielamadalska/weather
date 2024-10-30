@@ -24,14 +24,16 @@ def weather():
         print('response', response)
         data = response.json()
         
-        #if response == 200
-        weather_data = {
-            'city': data['name'],
-            'temperature': data['main']['temp'],
-            'description': data['weather'][0]['description']
-        }
-        print(weather_data, 'data')
-
+        if response.status_code == 200:
+            #if response == 200
+            weather_data = {
+                'city': data['name'],
+                'temperature': data['main']['temp'],
+                'description': data['weather'][0]['description']
+            }
+            print(weather_data, 'data')
+        else:
+            return 'City not found'
 
 
         return render_template('weather.html', weather_data=weather_data)

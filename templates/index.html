@@ -5,17 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <style>
-        /* Style dla body, input i button */
+        /* Ogólne style */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4685c4, #dfe6e9); /* Jasnoniebieski gradient */
+            color: #2c3e50; /* Ciemniejszy odcień granatowego dla lepszej czytelności */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Styl dla kontenera */
+        form {
+            background-color: rgba(255, 255, 255, 0.9); /* Lekko przezroczyste tło dla formularza */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Nagłówek */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #3477db; /* Jaśniejszy odcień niebieskiego */
+        }
+
+        /* Pole tekstowe */
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #bdc3c7; /* Jasnoszary kolor */
+            border-radius: 5px;
+            font-size: 16px;
+            color: #2c3e50; /* Ciemniejszy odcień granatowego */
+        }
+
+        /* Przycisk */
+        #submitBtn {
+            background-color: #2ecc71; /* Zielony kolor */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submitBtn:hover {
+            background-color: #27ae60; /* Ciemniejszy odcień zielonego po najechaniu */
+        }
+
+        /* Sekcja wyników pogody */
+        #weather-result {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #weather-result h2 {
+            color: #3498db; /* Jasny niebieski */
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        #weather-result p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        /* Ikona pogody */
+        #weather-icon {
+            width: 50px; /* Ustalamy szerokość ikony */
+            height: 50px; /* Ustalamy wysokość ikony */
+            margin-top: 10px;
+        }
     </style>
     <script src="/static/script.js" defer></script>
 </head>
 <body>
-    <form action="/weather" method="post">
-        <h1>Stay ahead of the weather</h1>
-        <input type="text" id="city" name="city" required>
-        <!-- <button onclick="weather()">Submit</button> -->
+    <form action="/weather" method="post" id="weather-form">    
+        <h1>Stay Ahead of the Weather</h1>
+        <input type="text" id="city" name="city" placeholder="Enter city" required>
         
-        <div id="weather-result"></div>
+        <div id="weather-result">
+            <h2 id="city-name"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+            <img id="weather-icon" src="" alt="Weather icon" style="display: none;">
+        </div>
+        
         <button id="submitBtn">SUBMIT</button>
     </form>
 </body>
