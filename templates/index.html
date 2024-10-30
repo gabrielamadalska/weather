@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        /* Style dla body, input i button */
+    </style>
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <form action="/weather" method="post">
+        <h1>Stay ahead of the weather</h1>
+        <input type="text" id="city" name="city" required>
+        <!-- <button onclick="weather()">Submit</button> -->
+        
+        <div id="weather-result"></div>
+        <button id="submitBtn">SUBMIT</button>
+    </form>
+</body>
+</html>
