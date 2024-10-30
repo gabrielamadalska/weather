@@ -6,6 +6,9 @@
     <title>Weather</title>
 </head>
 <body>
-    <h1>Location: {{ city }}</h1>
+    <h1>Location: {{ weather_data.city }}</h1>
+    <p>Temperatura: {{ weather_data.temperature }}°C</p>
+    <p>Opis: {{ weather_data.description }}</p>
+    <a href="{{ url_for('home') }}">Powrót</a>
 </body>
 </html>

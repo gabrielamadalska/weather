@@ -19,10 +19,24 @@ def weather():
     if request.method == 'POST':
         city = request.form.get('city')
 
-        return render_template('weather.html', city=city)
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric&lang=pl"
+        response = requests.get(url)
+        print('response', response)
+        data = response.json()
+        
+        #if response == 200
+        weather_data = {
+            'city': data['name'],
+            'temperature': data['main']['temp'],
+            'description': data['weather'][0]['description']
+        }
+        print(weather_data, 'data')
+
+
+
+        return render_template('weather.html', weather_data=weather_data)
     
     else:
-        #return "Proszę przesłać nazwę miasta przez formularz na stronie głównej.", 405
         return redirect(url_for('home'))
     
 if __name__ == '__main__':
