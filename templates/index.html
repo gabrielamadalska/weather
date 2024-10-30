@@ -7,17 +7,16 @@
     <style>
         /* Style dla body, input i button */
     </style>
+    <script src="/static/script.js" defer></script>
 </head>
 <body>
-    <h1>Stay ahead of the weather</h1>
-    <input type="text" id="city" placeholder="Enter the location">
-    <button onclick="getWeather()">Submit</button>
-    
-    <div id="weather-result"></div>
-
-    <!-- Import pliku script.js -->
-    <!-- <script src="/static/script.js"></script> -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    
+    <form action="/weather" method="post">
+        <h1>Stay ahead of the weather</h1>
+        <input type="text" id="city" name="city" required>
+        <!-- <button onclick="weather()">Submit</button> -->
+        
+        <div id="weather-result"></div>
+        <button id="submitBtn">SUBMIT</button>
+    </form>
 </body>
 </html>
